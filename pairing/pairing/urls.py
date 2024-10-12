@@ -1,5 +1,5 @@
 """
-URL configuration for translation project.
+URL configuration for pairing project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -14,13 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib import admin
 from django.urls import path
-from .views import detect_language_view
-from .views import language_detection_page
 
 urlpatterns = [
-    path('', language_detection_page, name='language_detection_page'),  # Home page for language detection
-    path('detect-language/', detect_language_view, name='detect_language'),
+    path('admin/', admin.site.urls),
 ]
-
-

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Detection</title>
+</head>
+<body>
+    <h1>Language Detection</h1>
+    <form id="languageForm">
+        {% csrf_token %}  <!-- Include CSRF token here -->
+        
+        <label for="message">Enter your message:</label><br>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
+
+        <label for="target_language">Translate to:</label><br>
+        <input type="text" id="target_language" name="target_language" placeholder="e.g., English, Spanish, French" required><br>
+
+        <button type="submit">Detect Language and Translate</button>
+    </form>
+
+    <h2>Detected Language:</h2>
+    <div id="result"></div>
+
+    <h2>Translated Message:</h2>
+    <div id="translated"></div>
+
+    <script>
+        document.getElementById('languageForm').onsubmit = async function(event) {
+            event.preventDefault();  // Prevent form submission
+            
+            const message = document.getElementById('message').value;
+            const target_language = document.getElementById('target_language').value;
+
+            // Get the CSRF token from the cookie
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            // Make a POST request to the detect-language endpoint
+            const response = await fetch('/detect-language/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken  // Include CSRF token in the header
+                },
+                body: JSON.stringify({ message, target_language }),
+            });
+
+            const data = await response.json();
+
+            // Display the detected language or an error message
+            if (response.ok) {
+                document.getElementById('result').textContent = data.detected_language;
+                document.getElementById('translated').textContent = data.translated_message;
+            } else {
+                document.getElementById('result').textContent = 'Error: ' + data.error;
+                document.getElementById('translated').textContent = '';
+            }
+        };
+    </script>
+</body>
+</html>
