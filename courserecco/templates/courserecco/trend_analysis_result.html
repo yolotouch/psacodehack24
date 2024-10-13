@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trend Analysis Results</title>
+</head>
+<body>
+    <h1>Job Role and Skillset Storage</h1>
+
+    <ul>
+        {% for job, skills in job_skill_storage.items|slice:":5" %}
+            <li><strong>Job Role:</strong> {{ job }} <br>
+                <strong>Skills:</strong> {{ skills|join:", " }}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'trend_analysis' %}">Upload More URLs</a><br><br>
+    <a href="{% url 'base_page' %}">Back to Home</a>
+</body>
+</html>

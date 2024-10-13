@@ -1,0 +1,15 @@
+<!-- trend_analysis.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trend Analysis - HR</title>
+</head>
+<body>
+    <h1>Upload URLs for Trend Analysis</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Analyze Trends</button>
+    </form>
+</body>
+</html>

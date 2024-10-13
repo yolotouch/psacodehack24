@@ -1,0 +1,15 @@
+<h2>Job Recommendation and Compatibility:</h2>
+<p><strong>Most Suitable Role:</strong> {{ recommendation.Suitable_Role }}</p>
+<p><strong>Compatibility Percentage:</strong> {{ recommendation.Compatibility_Percentage }}%</p>
+
+<h2>Missing Skills and Recommended Courses:</h2>
+<ul>
+    {% for course in recommendation.Recommended_Courses %}
+    <li>
+        <strong>Missing Skill:</strong> {{ course.Skill }}<br>
+        <strong>Recommended Course:</strong> 
+        <a href="{{ course.Course_URL }}" target="_blank">{{ course.Course_Title }}</a> <!-- Updated variable names -->
+    </li>
+    <br>
+    {% endfor %}
+</ul>

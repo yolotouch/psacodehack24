@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select User Type</title>
+</head>
+<body>
+    <h1>Welcome! Please select your user type</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" name="user_type" value="employee">I am an Employee</button>
+        <button type="submit" name="user_type" value="hr">I am HR</button>
+    </form>
+</body>
+</html>
