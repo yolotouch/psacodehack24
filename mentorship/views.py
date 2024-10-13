@@ -96,8 +96,8 @@ def mentor_search(request):
 
     mentor_candidates['Final_Score'] = round((
         0.6 * mentor_candidates['Skill Match'] +
-        0.2 * mentor_candidates['Years_of_Experience'] / 20 +
-        0.2 * mentor_candidates['Project_Success_Rate'])
+        0.35 * mentor_candidates['Years_of_Experience'] / 20 +
+        0.05 * mentor_candidates['Project_Success_Rate'])
     ,2) * 100
 
     top_mentors = mentor_candidates.sort_values(by='Final_Score', ascending=False).head(5)
