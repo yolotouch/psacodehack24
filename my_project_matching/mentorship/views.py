@@ -7,7 +7,7 @@ import os
 from .models import Question
 
 # Load the CSV file once at the start of the app (global scope)
-csv_file_path = '/Users/kohziyang/Documents/wtf/psacodehack24/employees.csv'  # Path to the CSV file
+csv_file_path = '/Users/kohziyang/Documents/wtf/psacodehack24/my_project_matching/employees.csv'  # Path to the CSV file
 employee_df = pd.read_csv(csv_file_path)
 
 from django.shortcuts import render, redirect
@@ -56,7 +56,7 @@ def mentor_search(request):
     # Check if the mentee already has a mentor
     mentee_data = employee_df[employee_df['Name'] == mentee_name]
     if mentee_data.empty:
-        return render(request, 'mentorship/mentor_search.html', {
+        return render(request, 'mentorship/search.html', {
             'error_message': f"No employee found with the name {mentee_name}. Please try again."
         })
     
@@ -161,11 +161,26 @@ def manage_mentorship(request):
     # Get the mentor's name from the mentee's data
     mentor_name = mentee_data.iloc[0]['Mentor']
 
-    return render(request, 'mentorship/manage.html', {
-        'mentee_name': mentee_name,
-        'mentor_name': mentor_name
-    })
+    if not pd.isna(mentor_name):
+        # Get the mentor's data
+        mentor_data = employee_df[employee_df['Name'] == mentor_name]
+        
+        if not mentor_data.empty:
+            mentor_info = mentor_data.iloc[0]
+            # Pass mentor details to the template
+            return render(request, 'mentorship/manage.html', {
+                'mentee_name': mentee_name,
+                'mentor_name': mentor_info['Name'],
+                'mentor_role': mentor_info['Role'],
+                'mentor_department': mentor_info['Department'],
+                'mentor_years_of_experience': mentor_info['Years_of_Experience'],
+                #'mentor_intro': mentor_info.get('Introduction', 'No introduction available')  # Customize this field
+            })
 
+    return render(request, 'mentorship/manage_mentorship.html', {
+        'mentee_name': mentee_name,
+        'mentor_name': None
+    })
 
 def home(request):
     # This is the homepage where the user can choose to manage or find a mentor
