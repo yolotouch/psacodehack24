@@ -2,35 +2,163 @@
 <html>
 <head>
     <title>Manage Mentorship</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        :root {
+            --yellow: #F9DF6D;
+            --black: #323232;
+            --grey: #898989;
+            --white: #F9F9F9;
+            --large-border: 20px;
+        }
+
+        * {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            row-gap: 25px;
+            background-color: var(--yellow);
+            max-width: 1280px;
+            margin: 0 auto;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        /* Card Section */
+        .card {
+            max-width: 500px;
+            border-radius: var(--large-border);
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: var(--white);
+            padding: 20px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            border-bottom: 2px solid var(--grey);
+            margin-bottom: 50px;
+        }
+
+        .card-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            text-align: center;
+            column-gap: 20px;
+        }
+
+        .home-btn {
+            background-color: var(--grey);
+            color: var(--white);
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            column-gap: 5px;
+            border-radius: var(--large-border);
+        }
+
+        .home-btn:hover {
+            color: var(--black);
+        }
+
+        .card-text a {
+            background-color: var(--grey);
+            color: var(--white);
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            column-gap: 5px;
+            border-radius: var(--large-border);
+        }
+
+        .card-text a:hover {
+            color: var(--black);
+        }
+    </style>
 </head>
 <body>
-    <h1>Manage Your Mentorship</h1>
+    <h1 class="title">Mentorship</h1>
 
     {% if mentor_name %}
-        <p><strong>Your mentor is:</strong> {{ mentor_name }}</p>
-        <p><strong>Role:</strong> {{ mentor_role }}</p>
-        <p><strong>Department:</strong> {{ mentor_department }}</p>
-        <p><strong>Years of Experience:</strong> {{ mentor_years_of_experience }}</p>
-        
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">Your mentor is: <strong>{{ mentor_name }}</strong></div>
+                <div class="card-text">
+                    <p><strong>Role:</strong><br>{{ mentor_role }}</p>
+                    <p><strong>Department:</strong><br>{{ mentor_department }}</p>
+                    <p><strong>Years of Experience:</strong><br>{{ mentor_years_of_experience }}</p>
+                </div>
+            </div>
+        </div>
     {% else %}
-        <p>You do not have a mentor yet. Please find a mentor.</p>
+        <div class="card">
+            <div class="card-body">
+                <div class="card-text">You do not have a mentor yet. Please find a mentor.</div>
+            </div>
+        </div>
     {% endif %}
 
     <!-- Button to send a question to the mentor -->
-    <h2>Send a Question to Your Mentor</h2>
-    <p>If you have a question, feel free to ask your mentor!</p>
-    <a href="{% url 'send_question' %}">
-        <button type="button">Send a Question</button>
-    </a>
+    <div class="d-flex flex-row justify-content-center align-items-stretch">
+        <div class="card mr-3">
+            <div class="card-body">
+                <div class="card-title">Send a Question to Your Mentor</div>
+                <div class="card-subtitle mb-3 text-muted">If you have a question, feel free to ask your mentor!</div>
+                <div class="card-text">
+                    <a href="{% url 'send_question' %}" class="btn">
+                        Send a Question
+                        <i class="fa fa-question-circle"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Link to view all questions -->
+        <div class="card">
+            <div class="card-body">
+                <div class="card-title">See Your Previous Questions</div>
+                <div class="card-subtitle mb-3 text-muted">See all the questions you've asked and whether your mentor has responded.</div>
+                <div class="card-text">
+                    <a href="{% url 'view_questions' %}" class="btn">
+                        See My Questions
+                        <i class="fa fa-eye"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
 
-    <!-- Link to view all questions -->
-    <h2>See Your Previous Questions</h2>
-    <p>See all the questions you've asked and whether your mentor has responded.</p>
-    <a href="{% url 'view_questions' %}">
-        <button type="button">See My Questions</button>
+    <a href="{% url 'home' %}" class="btn home-btn">
+        Back to Home
+        <i class="fa fa-home"></i>
     </a>
-
-    <a href="{% url 'home' %}">Back to Home</a>
+    
 </body>
 </html>
 

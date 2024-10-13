@@ -1,3 +1,5 @@
 pip3 install django
 pip3 install python-dotenv
 pip3 install openai==0.28
+pip3 install pandas
+pip3 install sklearn

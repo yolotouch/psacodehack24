@@ -2,31 +2,121 @@
 <html>
 <head>
     <title>Find a Mentor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        :root {
+            --yellow: #F9DF6D;
+            --black: #323232;
+            --grey: #898989;
+            --white: #F9F9F9;
+            --large-border: 20px;
+        }
+
+        * {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            row-gap: 25px;
+            background-color: var(--yellow);
+            max-width: 1280px;
+            margin: 0 auto;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        /* Card Section */
+        .card {
+            max-width: 500px;
+            border-radius: var(--large-border);
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: var(--white);
+            padding: 20px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            border-bottom: 2px solid var(--grey);
+            margin-bottom: 50px;
+        }
+
+        .card-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            text-align: center;
+            column-gap: 5px;
+        }
+
+        .card-text a {
+            background-color: var(--grey);
+            color: var(--white);
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            column-gap: 5px;
+            border-radius: var(--large-border);
+        }
+
+        .card-text a:hover {
+            color: var(--black);
+        }
+    </style>
 </head>
 <body>
-    <h1>Find a Mentor</h1>
+    <h1 class="title">Mentorship</h1>
 
-    {% if error_message %}
-        <p style="color: red;">{{ error_message }}</p>
-    {% else %}
-        <p>Dear {{ mentee_name }}, based on your skills and experience, here are your top mentor matches:</p>
-        <ul>
-        {% for mentor in mentors.itertuples %}
-            <li>
-                <strong>{{ mentor.Name }}</strong> - {{ mentor.Role }}<br>
-                Department: {{ mentor.Department }}<br>
-                Skills: {{ mentor.Skillset }}<br>
-                Years of Experience: {{ mentor.Years_of_Experience }}<br>
-                Your interest, skillsets are {{ mentor.Final_Score }}% align with {{ mentor.Name }}<br>
-                <!-- Button to choose this mentor -->
-                <form action="{% url 'mentor_select' mentor.Name %}" method="POST">
-                    {% csrf_token %}
-                    <button type="submit">Choose {{ mentor.Name }}</button>
-                </form>
-            </li>
-        {% endfor %}
-        </ul>
-    {% endif %}
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Find a Mentor</div>
+            {% if error_message %}
+                <div class="card-subtitle mb-3 text-muted" style="color: red;">{{ error_message }}</div>
+            {% else %}
+                <div class="card-subtitle mb-3 text-muted">Dear {{ mentee_name }}, based on your skills and experience, here are your top mentor matches:</div>
+                <div class="card-text">
+                    <ul>
+                        {% for mentor in mentors.itertuples %}
+                            <li>
+                                <strong>{{ mentor.Name }}</strong> - {{ mentor.Role }}<br>
+                                Department: {{ mentor.Department }}<br>
+                                Skills: {{ mentor.Skillset }}<br>
+                                Years of Experience: {{ mentor.Years_of_Experience }}<br>
+                                Your interest, skillsets are {{ mentor.Final_Score }}% align with {{ mentor.Name }}<br>
+                                <!-- Button to choose this mentor -->
+                                <form action="{% url 'mentor_select' mentor.Name %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit">Choose {{ mentor.Name }}</button>
+                                </form>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    
 </body>
 </html>
 

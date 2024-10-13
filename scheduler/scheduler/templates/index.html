@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Scheduler</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 20px;
+            cursor: pointer;
+        }
+        .status-message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Task Scheduler</h1>
+    <p>Click the buttons below to generate data and assign tasks.</p>
+
+    <!-- Generate Employee Data Button -->
+    <button id="generate-employees-btn">Generate Employee Data</button>
+    
+    <!-- Generate Task Data Button -->
+    <button id="generate-tasks-btn">Generate Task Data</button>
+
+    <!-- Assign Tasks & Download CSV Button -->
+    <button id="assign-tasks-btn">Assign Tasks & Download CSV</button>
+
+    <div id="status" class="status-message"></div>
+
+    <script>
+        // Function to send an AJAX request to a specific URL
+        async function sendAjaxRequest(url, successMessage) {
+            const response = await fetch(url);
+            const data = await response.text();
+
+            // Show success message if the response is okay
+            if (response.ok) {
+                document.getElementById('status').innerText = successMessage;
+            } else {
+                document.getElementById('status').innerText = 'Error occurred while processing the request.';
+            }
+        }
+
+        // Function to download the CSV file after assignment is done
+        function downloadCSV(url) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'task_assignments.csv';
+            link.click();
+        }
+
+        // Add event listener to "Generate Employee Data" button
+        document.getElementById('generate-employees-btn').addEventListener('click', function() {
+            sendAjaxRequest('/generate-employees/', 'Employee data generated successfully.');
+        });
+
+        // Add event listener to "Generate Task Data" button
+        document.getElementById('generate-tasks-btn').addEventListener('click', function() {
+            sendAjaxRequest('/generate-tasks/', 'Task data generated successfully.');
+        });
+
+        // Assign tasks and download CSV after successful task assignment
+        document.getElementById('assign-tasks-btn').addEventListener('click', function() {
+            // First, send an AJAX request to assign the tasks
+            fetch('/assign-tasks/')
+                .then(response => {
+                    if (response.ok) {
+                        document.getElementById('status').innerText = 'Tasks assigned successfully. CSV will be downloaded.';
+                        // Trigger the CSV download after task assignment
+                        downloadCSV('/assign-tasks/');  // Assuming this URL returns the CSV file
+                    } else {
+                        document.getElementById('status').innerText = 'Error occurred during task assignment.';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('status').innerText = 'Error occurred during task assignment.';
+                });
+        });
+    </script>
+</body>
+</html>
