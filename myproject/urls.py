@@ -1,5 +1,5 @@
 """
-URL configuration for pairing project.
+URL configuration for myproject project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -15,8 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.shortcuts import redirect
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('courserecco/', include('courserecco.urls')),      
+    path('translation/', include('translation.urls')),    
+    path('scheduler/', include('scheduler.urls')),    
+    path('mentorship/', include('mentorship.urls')),
+    path('my_project_matching/', include('my_project_matching.urls')),
+    path('', lambda request: redirect('translation/')),
 ]

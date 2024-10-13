@@ -7,8 +7,15 @@ import os
 from .models import Question
 
 # Load the CSV file once at the start of the app (global scope)
-csv_file_path = '/Users/fabianh/Documents/School/Hackathons/psacodehack24/my_project_matching/employees.csv'  # Path to the CSV file
+# Get the current directory (the directory where the script is located)
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Set the file path relative to the current directory
+csv_file_path = os.path.join(current_directory, 'employees.csv')
+
+# Read the CSV file
 employee_df = pd.read_csv(csv_file_path)
+
 
 from django.shortcuts import render, redirect
 

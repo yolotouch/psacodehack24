@@ -236,7 +236,7 @@
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
             // Make a POST request to the detect-language endpoint
-            const response = await fetch('/detect-language/', {
+            const response = await fetch('detect-language/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
