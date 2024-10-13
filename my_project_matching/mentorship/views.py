@@ -7,7 +7,7 @@ import os
 from .models import Question
 
 # Load the CSV file once at the start of the app (global scope)
-csv_file_path = '/Users/kohziyang/Documents/wtf/psacodehack24/my_project_matching/employees.csv'  # Path to the CSV file
+csv_file_path = '/Users/fabianh/Documents/School/Hackathons/psacodehack24/my_project_matching/employees.csv'  # Path to the CSV file
 employee_df = pd.read_csv(csv_file_path)
 
 from django.shortcuts import render, redirect
