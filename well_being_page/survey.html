@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Step Survey (One Question Per Page)</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link your CSS file -->
+</head>
+<body>
+    
+    <div class="container">
+        <!-- Step 1: Basic Info Form -->
+        <div id="basicInfoForm">
+            <h1>User Log In</h1>
+            <form id="stepOneForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Password:</label>
+                    <input type="password" id="pwd" name="pwd", placeholder="Enter your password">
+                </div>
+
+                <button type="submit">Next</button>
+            </form>
+        </div>
+
+        <!-- Survey Questions (Each in a separate div) -->
+        <div id="question1" class="hidden">
+            <h1>Question 1</h1>
+            <h2> Over the last two weeks, how often have you been bothered by the following problems?</h2>
+            <br \>
+            <h3>Little interest or pleasure in doing things</h3>
+            <br \>
+            <form>
+                <div class="form-group1">
+                    <input type="radio" id="q1_notatall" name="q1" value="Not at all" required>
+                    <label for="q1_notatall">Not at all</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q1_severaldays" name="q1" value="Several days">
+                    <label for="q1_severaldays">Several days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q1_halfdays" name="q1" value="More than half the days">
+                    <label for="q1_halfdays">More than half the days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q1_everyday" name="q1" value="Nearly every day">
+                    <label for="q1_everyday">Nearly every day</label>
+                </div>
+                <button type="button" id="next1">Next</button>
+            </form>
+        </div>
+
+        <div id="question2" class="hidden">
+            <h1>Question 2</h1>
+            <h2> Over the last two weeks, how often have you been bothered by the following problems?</h2>
+            <br \>
+            <h3>Feeling down, depressed, or hopeless</h3>
+            <br \>
+            <form>
+                <div class="form-group">
+                    <input type="radio" id="q2_notatall" name="q2" value="Not at all" required>
+                    <label for="q2_notatall">Not at all</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q2_severaldays" name="q2" value="Several days">
+                    <label for="q2_severaldays">Several days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q2_halfdays" name="q2" value="More than half the days">
+                    <label for="q2_halfdays">More than half the days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q2_everyday" name="q2" value="Nearly every day">
+                    <label for="q2_everyday">Nearly every day</label>
+                </div>
+                <button type="button" id="back2">Back</button>
+                <button type="button" id="next2">Next</button>
+            </form>
+        </div>
+
+        <div id="question3" class="hidden">
+            <h1>Question 3</h1>
+            <h2> Over the last two weeks, how often have you been bothered by the following problems?</h2>
+            <br \>
+            <h3>Trouble falling or staying asleep, or sleeping too much</h3>
+            <br \>
+            <form>
+                <div class="form-group">
+                    <input type="radio" id="q3_notatall" name="q3" value="Not at all" required>
+                    <label for="q3_notatall">Not at all</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_severaldays" name="q3" value="Several days">
+                    <label for="q3_severaldays">Several days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_halfdays" name="q3" value="More than half the days">
+                    <label for="q3_halfdays">More than half the days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_everyday" name="q3" value="Nearly every day">
+                    <label for="q3_everyday">Nearly every day</label>
+                </div>
+                <button type="button" id="back3">Back</button>
+                <button type="button" id="next3">Next</button>
+            </form>
+        </div>
+
+        <div id="question4" class="hidden">
+            <h1>Question 4</h1>
+            <h2> Over the last two weeks, how often have you been bothered by the following problems?</h2>
+            <br \>
+            <h3>Feeling tired or having little energy</h3>
+            <br \>
+            <form>
+                <div class="form-group">
+                    <input type="radio" id="q3_notatall" name="q3" value="Not at all" required>
+                    <label for="q3_notatall">Not at all</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_severaldays" name="q3" value="Several days">
+                    <label for="q3_severaldays">Several days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_halfdays" name="q3" value="More than half the days">
+                    <label for="q3_halfdays">More than half the days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_everyday" name="q3" value="Nearly every day">
+                    <label for="q3_everyday">Nearly every day</label>
+                </div>
+                <button type="button" id="back4">Back</button>
+                <button type="button" id="next4">Next</button>
+            
+            </form>
+        </div>
+
+        <div id="question5" class="hidden">
+            <h1>Question 5</h1>
+            <h2> Over the last two weeks, how often have you been bothered by the following problems?</h2>
+            <br \>
+            <h3>Poor appetite or overeating</h3>
+            <br \>
+            <form>
+                <div class="form-group">
+                    <input type="radio" id="q3_notatall" name="q3" value="Not at all" required>
+                    <label for="q3_notatall">Not at all</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_severaldays" name="q3" value="Several days">
+                    <label for="q3_severaldays">Several days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_halfdays" name="q3" value="More than half the days">
+                    <label for="q3_halfdays">More than half the days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_everyday" name="q3" value="Nearly every day">
+                    <label for="q3_everyday">Nearly every day</label>
+                </div>
+                <button type="button" id="back5">Back</button>
+                <button type="button" id="next5">Next</button>
+                
+            </form>
+        </div>
+
+        <div id="question6" class="hidden">
+            <h1>Question 6</h1>
+            <h2> Over the last two weeks, how often have you been bothered by the following problems?</h2>
+            <br \>
+            <h3>Feeling bad about yourself -- or that you are a failure or have let yourself or your family down</h3>
+            <br \>
+            <form>
+                <div class="form-group">
+                    <input type="radio" id="q3_notatall" name="q3" value="Not at all" required>
+                    <label for="q3_notatall">Not at all</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_severaldays" name="q3" value="Several days">
+                    <label for="q3_severaldays">Several days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_halfdays" name="q3" value="More than half the days">
+                    <label for="q3_halfdays">More than half the days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_everyday" name="q3" value="Nearly every day">
+                    <label for="q3_everyday">Nearly every day</label>
+                </div>
+                <button type="button" id="back6">Back</button>
+                <button type="button" id="next6">Next</button>
+            </form>
+        </div>
+
+        <div id="question7" class="hidden">
+            <h1>Question 7</h1>
+            <h2> Over the last two weeks, how often have you been bothered by the following problems?</h2>
+            <br \>
+            <h3>Trouble concentrating on things, such as reading the newspapre or watching television</h3>
+            <br \>
+            <form>
+                <div class="form-group">
+                    <input type="radio" id="q3_notatall" name="q3" value="Not at all" required>
+                    <label for="q3_notatall">Not at all</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_severaldays" name="q3" value="Several days">
+                    <label for="q3_severaldays">Several days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_halfdays" name="q3" value="More than half the days">
+                    <label for="q3_halfdays">More than half the days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_everyday" name="q3" value="Nearly every day">
+                    <label for="q3_everyday">Nearly every day</label>
+                </div>
+                <button type="button" id="back7">Back</button>
+                <button type="button" id="next7">Next</button>
+                
+            </form>
+        </div>
+
+        <div id="question8" class="hidden">
+            <h1>Question 8</h1>
+            <h2> Over the last two weeks, how often have you been bothered by the following problems?</h2>
+            <br \>
+            <h3>Moving or speaking so slowly that other people could have noticed? Or the opposite -- being so fidgetly or restless that you have been moving around a lot more that usual</h3>
+            <br \>
+            <form>
+                <div class="form-group">
+                    <input type="radio" id="q3_notatall" name="q3" value="Not at all" required>
+                    <label for="q3_notatall">Not at all</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_severaldays" name="q3" value="Several days">
+                    <label for="q3_severaldays">Several days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_halfdays" name="q3" value="More than half the days">
+                    <label for="q3_halfdays">More than half the days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_everyday" name="q3" value="Nearly every day">
+                    <label for="q3_everyday">Nearly every day</label>
+                </div>
+                <button type="button" id="back8">Back</button>
+                <button type="button" id="next8">Next</button>
+                
+            </form>
+        </div>
+
+        <div id="question9" class="hidden">
+            <h1>Question 9</h1>
+            <h2> Over the last two weeks, how often have you been bothered by the following problems?</h2>
+            <br \>
+            <h3>Thoughts that you would be better off dead or of hurting yourself in some way</h3>
+            <br \>
+            <form>
+                <div class="form-group">
+                    <input type="radio" id="q3_notatall" name="q3" value="Not at all" required>
+                    <label for="q3_notatall">Not at all</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_severaldays" name="q3" value="Several days">
+                    <label for="q3_severaldays">Several days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_halfdays" name="q3" value="More than half the days">
+                    <label for="q3_halfdays">More than half the days</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" id="q3_everyday" name="q3" value="Nearly every day">
+                    <label for="q3_everyday">Nearly every day</label>
+                </div>
+                <button type="button" id="back9">Back</button>
+                <button type="submit" id="submitSurvey">Submit</button>
+            </form>
+        </div>
+
+        
+        
+        <!-- Thank You Page -->
+        <div id="thankYouPage" class="hidden">
+            <h1>Thank you for completing the survey!</h1>
+            <p>Dashboard Generating...</p>
+        </div>
+
+       
+            
+    </div>
+    <div id="dashboard" class="hidden">
+        <img src="dashboard.jpg">
+    </div>
+
+    <script src="script.js"></script> <!-- Link your JavaScript file -->
+</body>
+</html>

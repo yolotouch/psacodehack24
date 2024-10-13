@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 pip3 install django
 pip3 install python-dotenv
 pip3 install openai==0.28
@@ -5,3 +6,14 @@ pip3 install pandas
 pip3 install sklearn
 pip3 install faker
 pip3 install bs4
+=======
+bs4
+django
+faker
+openai == 0.28
+pandas
+requests
+scikit-learn
+python-dotenv
+gunicorn
+>>>>>>> 3a19d8cfe8c10c1ce87f5a3b9cdd8dc47d8dde2b
