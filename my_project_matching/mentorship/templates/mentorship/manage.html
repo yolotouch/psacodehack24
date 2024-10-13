@@ -6,9 +6,12 @@
 <body>
     <h1>Manage Your Mentorship</h1>
 
-    <!-- Display the mentor's name -->
     {% if mentor_name %}
-        <p>Your mentor is: <strong>{{ mentor_name }}</strong></p>
+        <p><strong>Your mentor is:</strong> {{ mentor_name }}</p>
+        <p><strong>Role:</strong> {{ mentor_role }}</p>
+        <p><strong>Department:</strong> {{ mentor_department }}</p>
+        <p><strong>Years of Experience:</strong> {{ mentor_years_of_experience }}</p>
+        
     {% else %}
         <p>You do not have a mentor yet. Please find a mentor.</p>
     {% endif %}

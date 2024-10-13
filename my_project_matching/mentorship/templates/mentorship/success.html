@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mentor Selection Success</title>
+    <title>Mentor Selected</title>
 </head>
 <body>
-    <h1>{{ message }}</h1>
-    <p>You have successfully chosen {{ mentor_name }} as your mentor.</p>
+    <h1>Congratulations {{ mentee_name }}!</h1>
+    <p>You have successfully selected {{ mentor_name }} as your mentor.</p>
+
+    <a href="{% url 'home' %}">
+        <button type="button">Return to Home</button>
+    </a>
 </body>
 </html>
