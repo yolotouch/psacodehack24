@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome, {{ mentee_name }}</title>
+</head>
+<body>
+    <h1>Welcome {{ mentee_name }}</h1>
+    <p>Please choose an option:</p>
+    <ul>
+        <li><a href="{% url 'find_mentor' %}">Find a Mentor</a></li>
+        <li><a href="{% url 'manage_mentorship' %}">Manage Your Mentorship</a></li>
+    </ul>
+</body>
+</html>
+

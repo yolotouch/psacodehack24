@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mentor Already Chosen</title>
+</head>
+<body>
+    <h1>Mentor Status</h1>
+    <p>Dear {{ mentee_name }}, you have already chosen a mentor: {{ mentor_name }}.</p>
+    <p>You cannot choose another mentor.</p>
+    <a href="{% url 'home' %}">Go back to the home page</a>
+</body>
+</html>

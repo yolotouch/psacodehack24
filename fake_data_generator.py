@@ -110,11 +110,16 @@ while len(data) < 3000:  # Loop until we have exactly 100 valid rows
         selected_skills = random.sample(department_skillsets[department], num_skills)
         skillset = ', '.join(selected_skills)  # Choose skillsets based on department
         project_success_rate = round(random.uniform(0.5, 1.0), 2)  # Random success rate between 0.5 and 1.0
-        
-        data.append([name, age, department, role, years_of_experience, skillset, project_success_rate])
+        if years_of_experience < 5:
+            mentee = "NA"
+            mentor = ""
+        else:
+            mentee = ""
+            mentor = "NA"
+        data.append([name, age, department, role, years_of_experience, skillset, project_success_rate, mentor , mentee])
 
 # Create a DataFrame
-df = pd.DataFrame(data, columns=['Name', 'Age', 'Department', 'Role', 'Years_of_Experience', 'Skillset', 'Project_Success_Rate'])
+df = pd.DataFrame(data, columns=['Name', 'Age', 'Department', 'Role', 'Years_of_Experience', 'Skillset', 'Project_Success_Rate',"Mentor","Mentee"])
 
 # Save to CSV
 df.to_csv('employees.csv', index=False)

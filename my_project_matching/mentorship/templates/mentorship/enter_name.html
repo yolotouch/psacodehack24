@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Your Name</title>
+</head>
+<body>
+    <h1>Enter Your Name to Proceed</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="mentee_name">Your Name:</label>
+        <input type="text" name="mentee_name" id="mentee_name" required>
+        <button type="submit">Proceed</button>
+    </form>
+</body>
+</html>
+

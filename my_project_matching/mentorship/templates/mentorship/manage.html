@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Mentorship</title>
+</head>
+<body>
+    <h1>Manage Your Mentorship</h1>
+
+    <!-- Display the mentor's name -->
+    {% if mentor_name %}
+        <p>Your mentor is: <strong>{{ mentor_name }}</strong></p>
+    {% else %}
+        <p>You do not have a mentor yet. Please find a mentor.</p>
+    {% endif %}
+
+    <!-- Button to send a question to the mentor -->
+    <h2>Send a Question to Your Mentor</h2>
+    <p>If you have a question, feel free to ask your mentor!</p>
+    <a href="{% url 'send_question' %}">
+        <button type="button">Send a Question</button>
+    </a>
+
+    <!-- Link to view all questions -->
+    <h2>See Your Previous Questions</h2>
+    <p>See all the questions you've asked and whether your mentor has responded.</p>
+    <a href="{% url 'view_questions' %}">
+        <button type="button">See My Questions</button>
+    </a>
+
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
+
+
+
