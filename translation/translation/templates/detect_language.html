@@ -4,65 +4,220 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Language Translator Chat</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        :root {
+            --yellow: #F9DF6D;
+            --black: #323232;
+            --grey: #898989;
+            --white: #F9F9F9;
+            --large-border: 20px;
         }
-        #chatArea {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 50%;
+
+        * {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            row-gap: 25px;
+            background-color: var(--yellow);
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        /* Profile Section */
+        .profile {
+            margin: 0 auto;
+            border-radius: var(--large-border);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: var(--white);
+            padding: 20px;
+            min-width: 500px;
+        }
+
+        .profile h2 {
+            font-size: 15px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+            font-weight: bolder;
+        }
+
+        .user-select {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .user-select span {
+            color: var(--grey);
+            font-style: italic;
+        }
+
+        .user-select input {
+            background-color: var(--black);
+            color: var(--yellow);
+            border: none;
+            text-align: center;
+            border-radius: var(--large-border);
+        }
+
+        .user-select i {
+            color: var(--grey);
+        }
+
+        /* Chat Section */
+
+        #chatArea1 {
+            padding: 20px;
+            width: 49%;
             margin: auto;
             height: 300px;
             overflow-y: scroll;
-            background-color: #f9f9f9;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: var(--white);
+            border-radius: var(--large-border) 0 0 var(--large-border);
         }
+
+        #chatArea2 {
+            padding: 20px;
+            width: 49%;
+            margin: auto;
+            height: 300px;
+            overflow-y: scroll;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: var(--white);
+            border-radius: var(--large-border) 0 0 var(--large-border);
+        }
+
+        /* Message Section */
+        .message-section {
+            background-color: var(--yellow);
+            min-width: 500px;
+            margin: 0 auto;
+            padding: 5px 20px;
+            column-gap: 10px;
+        }
+
+        .message-section select {
+            background-color: var(--black);
+            color: var(--yellow);
+            border: none;
+            text-align: center;
+            border-radius: var(--large-border);
+            padding: 0 10px;
+            width: fit-content;
+            margin: 0 auto;
+        }
+
+        .input-message {
+            border-radius: var(--large-border);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: var(--white);
+            column-gap: 5px;
+        }
+
+        .input-message input {
+            text-align: left;
+            border-radius: var(--large-border);
+            padding: 10px;
+            border: none;
+            background-color: var(--white);
+            width: 90%;
+        }
+
+        .input-message button {
+            width: 30px;
+            font-size: 15px;
+            padding: 5px;
+            border-radius: 50%;
+            background-color: var(--grey);
+            color: var(--white);
+            border: none;
+            transition-duration: 0.5s;
+            text-align: center;
+            right: 2px;
+        }
+
+        .input-message button:hover {
+            background-color: var(--black);
+        }
+
         .message {
             margin: 10px 0;
         }
+
         .user1 {
             color: blue;  /* User 1 color */
         }
+
         .user2 {
             color: green;  /* User 2 color */
         }
+
         .translated {
             font-style: italic;  /* Italic for translated messages */
         }
     </style>
 </head>
 <body>
-    <h1>Language Translator Chat</h1>
+    <h1 class="title">Translator Chatroom</h1>
 
-    <div id="profile">
+    <div id="profile" class="profile">
         <h2>User Profiles</h2>
-        <div>
-            <h3>User 1</h3>
-            <label for="nationality1">Enter Nationality/Language:</label>
-            <input type="text" id="nationality1" placeholder="e.g., English, Malay" required>
-        </div>
-        <div>
-            <h3>User 2</h3>
-            <label for="nationality2">Enter Nationality/Language:</label>
-            <input type="text" id="nationality2" placeholder="e.g., Malay, English" required>
+        <div class="user-select">
+            <div>
+                <h6>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Jane Duke <span>(you)</span></h6>
+                <div class="d-flex flex-row">
+                    <input type="select" id="nationality1" value="English" readonly>
+                    <p></p>
+                </div>
+            </div>
+            <div>
+                <i class="fa fa-chevron-circle-right"></i>
+            </div>
+            <div>
+                <h6>🇫🇷 Léon Ma</h6>
+                <input type="select" id="nationality2" value="French" readonly>
+            </div>
         </div>
     </div>
 
-    <div id="chatArea"></div>
-
-    <form id="languageForm">
+    <div class="d-flex flex-row justify-content-evenly">
+        <div id="chatArea1">
+            <h6 style="text-decoration: underline;">Jane Duke's Chat</h6>
+        </div>
+        <div id="chatArea2">
+            <h6 style="text-decoration: underline;">Léon Ma's Chat</h6>
+        </div>
+    </div>
+    
+    <form id="languageForm" class="message-section d-flex flex-column">
         {% csrf_token %}
         
-        <label for="user">Select User:</label><br>
         <select id="user" name="user">
-            <option value="user1">User 1</option>
-            <option value="user2">User 2</option>
+            <option value="user1">Jane Duke</option>
+            <option value="user2">Léon Ma</option>
         </select><br>
 
-        <label for="message">Your Message:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br>
-
-        <button type="submit">Send</button>
+        <div class="input-message d-flex flex-row align-items-center justify-content-center text-align-center">
+            <input id="message" name="message" placeholder="Your message..."></input><br>
+            <button type="submit"><i class="fa fa-send"></i></button>
+        </div>
     </form>
 
     <script>
@@ -93,11 +248,18 @@
             const data = await response.json();
 
             // Update the chat area with the original and translated messages
-            const chatArea = document.getElementById('chatArea');
+            const chatArea1 = document.getElementById('chatArea1');
+            const chatArea2 = document.getElementById('chatArea2');
             if (response.ok) {
                 const userClass = selectedUser === 'user1' ? 'user1' : 'user2';  // Assign class based on user selection
-                chatArea.innerHTML += `<div class="message ${userClass}">${selectedUser === 'user1' ? 'User 1' : 'User 2'}: ${message}</div>`;
-                chatArea.innerHTML += `<div class="message ${userClass} translated">Translated: ${data.translated_message}</div>`;
+                if (selectedUser === 'user1') {
+                    chatArea1.innerHTML += `<div class="message ${userClass}">You: ${message}</div>`;
+                    chatArea2.innerHTML += `<div class="message ${userClass} translated">${selectedUser === 'user1' ? 'Jane Duke' : 'Léon Ma'}: ${data.translated_message}</div>`;
+                } else {
+                    chatArea2.innerHTML += `<div class="message ${userClass}">You: ${message}</div>`;
+                    chatArea1.innerHTML += `<div class="message ${userClass} translated">${selectedUser === 'user1' ? 'Jane Duke' : 'Léon Ma'}: ${data.translated_message}</div>`;
+                }
+                
             } else {
                 chatArea.innerHTML += `<div class="message user1">Error: ${data.error}</div>`;
             }

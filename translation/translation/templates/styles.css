@@ -1,0 +1,24 @@
+body {
+    font-family: Arial, sans-serif;
+}
+#chatArea {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 50%;
+    margin: auto;
+    height: 300px;
+    overflow-y: scroll;
+    background-color: #f9f9f9;
+}
+.message {
+    margin: 10px 0;
+}
+.user1 {
+    color: blue;  /* User 1 color */
+}
+.user2 {
+    color: green;  /* User 2 color */
+}
+.translated {
+    font-style: italic;  /* Italic for translated messages */
+}
