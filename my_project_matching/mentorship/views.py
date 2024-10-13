@@ -7,7 +7,7 @@ import os
 from .models import Question
 
 # Load the CSV file once at the start of the app (global scope)
-csv_file_path = '/Users/kohziyang/Documents/wtf/psacodehack24/my_project_matching/employees.csv'  # Path to the CSV file
+csv_file_path = '/Users/fabianh/Documents/School/Hackathons/psacodehack24/my_project_matching/employees.csv'  # Path to the CSV file
 employee_df = pd.read_csv(csv_file_path)
 
 from django.shortcuts import render, redirect
@@ -87,13 +87,13 @@ def mentor_search(request):
     mentor_candidates['Success Rate Match'] = (
         mentor_candidates['Project_Success_Rate'] / mentee_project_success_rate).apply(lambda x: min(x, 1))
 
-    mentor_candidates['Final Score'] = (
+    mentor_candidates['Final_Score'] = round((
         0.6 * mentor_candidates['Skill Match'] +
-        0.2 * mentor_candidates['Experience Match'] +
-        0.2 * mentor_candidates['Success Rate Match']
-    )
+        0.2 * mentor_candidates['Years_of_Experience'] / 20 +
+        0.2 * mentor_candidates['Project_Success_Rate'])
+    ,2) * 100
 
-    top_mentors = mentor_candidates.sort_values(by='Final Score', ascending=False).head(5)
+    top_mentors = mentor_candidates.sort_values(by='Final_Score', ascending=False).head(5)
 
     return render(request, 'mentorship/match_results.html', {
         'mentee_name': mentee_name,
