@@ -87,13 +87,13 @@ def mentor_search(request):
     mentor_candidates['Success Rate Match'] = (
         mentor_candidates['Project_Success_Rate'] / mentee_project_success_rate).apply(lambda x: min(x, 1))
 
-    mentor_candidates['Final Score'] = (
+    mentor_candidates['Final_Score'] = round((
         0.6 * mentor_candidates['Skill Match'] +
-        0.2 * mentor_candidates['Experience Match'] +
-        0.2 * mentor_candidates['Success Rate Match']
-    )
+        0.2 * mentor_candidates['Years_of_Experience'] / 20 +
+        0.2 * mentor_candidates['Project_Success_Rate'])
+    ,2) * 100
 
-    top_mentors = mentor_candidates.sort_values(by='Final Score', ascending=False).head(5)
+    top_mentors = mentor_candidates.sort_values(by='Final_Score', ascending=False).head(5)
 
     return render(request, 'mentorship/match_results.html', {
         'mentee_name': mentee_name,
