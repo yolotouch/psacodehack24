@@ -40,6 +40,48 @@
             font-size: 20px;
         }
 
+        /* Nav */
+        .button-container {
+        display: flex;
+        background-color: var(--black);
+        width: 250px;
+        height: 40px;
+        align-items: center;
+        justify-content: space-around;
+        margin: 0 auto;
+        margin-top: 20px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px,
+                var(--yellow) 5px 10px 15px;
+        }
+    
+        .button {
+        outline: 0 !important;
+        border: 0 !important;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--white);
+        transition: all ease-in-out 0.3s;
+        cursor: pointer;
+        }
+    
+        .button:hover {
+        transform: translateY(-3px);
+        }
+    
+        .icon {
+        font-size: 20px;
+        }
+
+        .button-container a:hover {
+        text-decoration: none;
+        }
+
         /* Profile Section */
         .profile {
             margin: 0 auto;
@@ -175,6 +217,38 @@
     </style>
 </head>
 <body>
+    <div class="button-container">
+        <a href="{% url 'index' %}">
+            <button class="button">
+                <i class="fa fa-home"></i>
+            </button>
+        </a>
+
+        <a href="{% url 'translation' %}">
+            <button class="button">
+                <i class="fa fa-language"></i>
+            </button>
+        </a>
+
+        <a href="{% url 'mentorship' %}">
+            <button class="button">
+                <i class="fa fa-mortar-board"></i>
+            </button>
+        </a>
+    
+        <a href="{% url 'courserecco' %}">
+            <button class="button">
+                <i class="fa fa-puzzle-piece"></i>
+            </button>
+        </a>
+    
+        <a href="{% url 'scheduler' %}">
+            <button class="button">
+                <i class="fa fa-calendar"></i>
+            </button>
+        </a>
+    </div>
+    
     <h1 class="title">Translator Chatroom</h1>
 
     <div id="profile" class="profile">
