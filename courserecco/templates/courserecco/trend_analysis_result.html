@@ -2,19 +2,122 @@
 <html>
 <head>
     <title>Trend Analysis Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+        :root {
+            --yellow: #F9DF6D;
+            --black: #323232;
+            --grey: #898989;
+            --white: #F9F9F9;
+            --large-border: 20px;
+        }
+
+        * {
+            font-family: "Inter", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            row-gap: 25px;
+            background-color: var(--yellow);
+            max-width: 1280px;
+            margin: 0 auto;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .status-message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: green;
+        }
+
+        /* Card Section */
+        .card {
+            max-width: 600px;
+            border-radius: var(--large-border);
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: var(--white);
+            padding: 20px;
+        }
+
+        .card-title {
+            font-weight: bold;
+            border-bottom: 2px solid var(--grey);
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .card-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+            text-align: center;
+            column-gap: 10px;
+        }
+
+        .card-text a {
+            background-color: var(--grey);
+            color: var(--white);
+            height: fit-content;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            column-gap: 5px;
+            border-radius: var(--large-border);
+            transition: 0.3s;
+        }
+
+        .card-text a:hover {
+            transform: scale(1.05);
+        }
+
+        .job-list {
+            padding: 10px;
+            list-style-type: decimal;
+        }
+    </style>
 </head>
 <body>
-    <h1>Job Role and Skillset Storage</h1>
+    <h1 class="title">Course Recommender</h1>
 
-    <ul>
-        {% for job, skills in job_skill_storage.items|slice:":5" %}
-            <li><strong>Job Role:</strong> {{ job }} <br>
-                <strong>Skills:</strong> {{ skills|join:", " }}
-            </li>
-        {% endfor %}
-    </ul>
-
-    <a href="{% url 'trend_analysis' %}">Upload More URLs</a><br><br>
-    <a href="{% url 'base_page' %}">Back to Home</a>
+    <div class="card">
+        <div class="card-body">
+            <div class="card-title">Job Role and Skillset Storage</div>
+            <div>
+                <ul>
+                    {% for job, skills in job_skill_storage.items|slice:":5" %}
+                        <li class="job-list mb-3">
+                            <strong>Job Role:</strong> {{ job }} <br>
+                            <strong>Skills:</strong> {{ skills|join:", " }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="card-text">
+                <a href="{% url 'trend_analysis' %}" class="btn">Upload More URLs</a><br><br>
+                <a href="{% url 'base_page' %}" class="btn">Back to Home</a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
