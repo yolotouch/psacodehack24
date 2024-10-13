@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.shortcuts import redirect
 from django.urls import path, include
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,5 @@ urlpatterns = [
     path('scheduler/', include('scheduler.urls')),    
     path('mentorship/', include('mentorship.urls')),
     path('my_project_matching/', include('my_project_matching.urls')),
-    path('', lambda request: redirect('translation/')),
+    path('', views.index, name='main'),
 ]
