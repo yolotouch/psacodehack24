@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-7h+ga$rij9^0052=+1_i&c7^sj3q+qagy5f4t+po(f+zj%^&zs
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['psacodehack24.onrender.com']
 
 
 # Application definition
