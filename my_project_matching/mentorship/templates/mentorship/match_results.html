@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find a Mentor</title>
+</head>
+<body>
+    <h1>Find a Mentor</h1>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% else %}
+        <p>Dear {{ mentee_name }}, based on your skills and experience, here are your top mentor matches:</p>
+        <ul>
+        {% for mentor in mentors.itertuples %}
+            <li>
+                <strong>{{ mentor.Name }}</strong> - {{ mentor.Role }}<br>
+                Department: {{ mentor.Department }}<br>
+                Skills: {{ mentor.Skillset }}<br>
+                Years of Experience: {{ mentor.Years_of_Experience }}<br>
+                Success Rate: {{ mentor.Project_Success_Rate }}<br>
+                Match Score: {{ mentor.Final_Score }}<br>
+                <!-- Button to choose this mentor -->
+                <form action="{% url 'mentor_select' mentor.Name %}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Choose {{ mentor.Name }}</button>
+                </form>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
+

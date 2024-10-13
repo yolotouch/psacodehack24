@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Questions</title>
+</head>
+<body>
+    <h1>Your Questions and Answers</h1>
+
+    <ul>
+    {% for question in questions %}
+        <li>
+            <strong>Question:</strong> {{ question.question_text }}<br>
+            <strong>Answer:</strong> {{ question.answer_text|default:"No answer yet." }}<br>
+            <strong>Asked on:</strong> {{ question.timestamp|date:"Y-m-d H:i" }}
+        </li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>
