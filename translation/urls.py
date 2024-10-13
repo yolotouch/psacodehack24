@@ -19,7 +19,7 @@ from .views import detect_language_view
 from .views import language_detection_page
 
 urlpatterns = [
-    path('', language_detection_page, name='language_detection_page'),  # Home page for language detection
+    path('', language_detection_page, name='language_detection_page'),
     path('detect-language/', detect_language_view, name='detect_language'),
 ]
 
